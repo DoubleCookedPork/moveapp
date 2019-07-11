@@ -1,12 +1,12 @@
 <template>
-  <div id="app">
-    <router-view />
+  <div class="home">
+    <van-nav-bar title="首页" />
   </div>
 </template>
 
 <script>
 export default {
-  name: 'APP',
+  name: 'HomeIndex',
   data () {
     return {
 

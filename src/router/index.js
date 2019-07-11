@@ -1,22 +1,25 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [{
     path: '/',
-    name: 'home',
-    component: Home
+    component: () => import('@/views/tabbar-layout'),
+    children: [{
+      // home作为tabbar-layout的默认子路由
+      name: 'home',
+      path: '',
+      component: () => import('@/views/home')
+    }]
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+    name: 'login',
+    path: '/login',
+    component: () => import('@/views/login')
   }
   ]
 })
+
+export default router
